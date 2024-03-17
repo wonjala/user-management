@@ -56,6 +56,11 @@
 
 .content {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: start !important;
+  justify-content: start !important;
 }
 
 /* --------- Non-flexbox related styles --------- */
@@ -85,7 +90,7 @@ body {
 .sidebar {
   display: flex;
   align-items: start;
-  background-color: #1c768f;
+  /* background-color: #1c768f; */
 }
 
 ul {
@@ -112,4 +117,18 @@ a:hover {
   color: #fa991c;
   background-color: #ecf8fd;
   
+}
+table {
+  font-family: "poppins";
+  border-collapse: collapse;
+  width: 100%;
+}
+td,th{
+  border: 1px solid #ecf8fd ;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #1c768f;
 }
