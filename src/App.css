@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
   color: white;
 }
 
@@ -37,11 +37,9 @@
   }
 }
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Style the header */
@@ -59,7 +57,7 @@ body {
 .content {
   flex-grow: 1;
 }
-  
+
 /* --------- Non-flexbox related styles --------- */
 .child {
   display: flex;
@@ -69,35 +67,49 @@ body {
   padding: 20px;
   font-size: 20px;
   line-height: 20px;
-  color: #ECF8FD;
-  background-color: #272838;
+  color: #fbf3f2;
+  /* background-color: #272838; */
   border-radius: 1px;
-  border: 1px solid #AFCBD5;
+  border: 1px solid #fa991c;
+  /* border: 1px solid #1C768F; */
+  margin: 4px;
 }
 
 body {
-  background-color: #F2B418;
-  font-family: Verdana;
-  font-weight: 600;
+  background-color: #032539;
+  font-family: "poppins";
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .sidebar {
   display: flex;
   align-items: start;
-
+  background-color: #1c768f;
 }
 
 ul {
   list-style: none;
   padding: 0;
+
+  width: 100%;
 }
 
-li{
-padding: 8px;
-margin: 8px 0;
+li {
+  margin: 8px 0;
+  width: 100;
 }
 
 a {
-text-decoration: none;
-color: #ECF8FD;
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: #ecf8fd;
+  transition: all 1s ease-in 100ms;
+}
+
+a:hover {
+  color: #fa991c;
+  background-color: #ecf8fd;
+  
 }
