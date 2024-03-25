@@ -115,6 +115,7 @@ header {
   font-family: 'nunito', sans-serif;
   font-weight: 700;
   font-size: 320px;
+  background-color: #6474E5;
 }
 
 a {
@@ -138,9 +139,8 @@ tr:nth-child(even) {
   background-color: #dde5feeb;
 }
 .form-container {
-  background-color: #282c34;
-padding: 12px;
-width: 80%;
+  padding: 12px;
+  width: 70%;
 }
 
 .input-group {
@@ -148,15 +148,27 @@ width: 80%;
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-  gap: 4px;
   justify-content: center;
+  gap: 4px;
+
+}
+
+.input-group > * {
+  /* outline: 1px solid lightcoral; */
+}
+
+.input-group > label {
+  text-align: left;
+  flex: 1;
 }
 
 input{
+  flex: 5;
   border: 2px solid gray;
   border-radius: 4px;
   padding: 8px 16px;
 }
+
 .button-container{
   width: 100%;
   text-align: right;

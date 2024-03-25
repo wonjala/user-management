@@ -71,19 +71,22 @@ const UserManagement = () => {
     <>
       <h1> User Management </h1>
       <div className="button-container">
-      <Link to="/AddUser">
+      <Link to="/UserManagement/AddUser">
         <button>Add User</button>
       </Link>
       </div>
      
       <table>
+        <thead>
         <tr>
           <th>Username</th>
           <th>Email</th>
           <th>Age</th>
           <th>City</th>
-          <th colSpan={2}>Action</th>
+          <th colSpan={3}>Action</th>
         </tr>
+        </thead>
+      <tbody>
         { users.length > 0 && 
         <>
           {users.map((user, index) => {
@@ -94,10 +97,13 @@ const UserManagement = () => {
               <td>{user.age}</td>
               <td>{user.city}</td>
               <td>
-              <Link to= {'/UseManagement/edit/${user.id}'}> <button>Edit</button></Link>
+              <Link to= {`/UserManagement/UserDetails/${user.id}`}> <button>Details</button></Link>
               </td>
               <td>
-              <Link to= {'/UseManagement/edit/${user.id}'}> <button className="Delete">Delete</button></Link>
+              <Link to= {`/UserManagement/edit/${user.id}`}> <button>Edit</button></Link>
+              </td>
+              <td>
+              <Link to= {`/UserManagement/delete/${user.id}`}> <button className="Delete">Delete</button></Link>
               </td>
             </tr>
           );
@@ -106,8 +112,10 @@ const UserManagement = () => {
         }
         { users.length === 0 && 
         <>
-        <tr><td colSpan={4}>No records found</td></tr>
+        <tr><td colSpan={5}>No records found</td></tr>
         </>}
+      </tbody>
+        
       </table>
     </>
   );
