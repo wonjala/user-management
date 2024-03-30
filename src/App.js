@@ -10,6 +10,7 @@ import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 import UserDetails from './pages/UserManagement/UserDetails';
+import Login from './pages/Auth/Login';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/Contact" element={<ContactUs/>} />
           <Route path="/UserManagement/UserDetails/:id" element={<UserDetails/>} />
         </Route>
+        <Route path="/Login" element={<Login/>} />
       </Routes>
     </BrowserRouter>
     </div>

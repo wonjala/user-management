@@ -55,15 +55,17 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100%;
 }
 
-.main {
-  display: flex;
-  flex-grow: 1;
-}
 
 .content {
   flex-grow: 1;
+  padding: 20px;
+  font-size: 20px;
+  /* background-color: #9AA4EC;
+  border-radius: 10px; */
+  border: 1px solid #c0b9f9;
 }
 
 /* --------- Non-flexbox related styles --------- */
@@ -95,6 +97,10 @@ body {
   align-items: start;
   justify-content: start;
   padding: 30px;
+}
+.main {
+  display: flex;
+  min-height: 100vh;
 }
 
 ul {
@@ -139,15 +145,18 @@ tr:nth-child(even) {
   background-color: #dde5feeb;
 }
 .form-container {
-  padding: 12px;
-  width: 70%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap:8px;
 }
 
 .input-group {
+  width: 100%;
   margin: 8px 0;
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   justify-content: center;
   gap: 4px;
 
@@ -163,10 +172,14 @@ tr:nth-child(even) {
 }
 
 input{
+  width: 100%;
   flex: 5;
   border: 2px solid gray;
   border-radius: 4px;
   padding: 8px 16px;
+}
+.label-danger{
+  color: red;
 }
 
 .button-container{
@@ -187,4 +200,12 @@ button {
 
 .Delete {
   background-color: red;
+}
+
+.login-container {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

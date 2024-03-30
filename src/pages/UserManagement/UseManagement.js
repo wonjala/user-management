@@ -1,47 +1,25 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import  React, { useEffect, useState } from  'react';
-
+import ViTable from "../../components/ViTable";
 const UserManagement = () => {
-
-  const student = {
-    name : 'John Doe',
-    roll: 213,
-    phone: [12,125,149],
-  }
-
-  //object destructuring
-  const {name, roll, phone} = student
-  console.log(name);
-
-  //object destructuring
-  const [a, b, c] = phone;
-  console.log(a,b,c);
-
-  //Spread Operator
-  const uzers = [
+  const header = [
     {
-      id: 1,
-      name: "Alice",
+      key: "username",
+      label: "Username",
+    },
+    {
+      key: "email",
+      label: "Email",
+    },
+    {
+      key: "age",
+      label: "Age",
+    },
+    {
+      key: "city",
+      label: "City",
     }
   ]
-
-  const uzer = {
-      id: 2,
-      name: "Bob",
-    }
-
-    const newUser = [...uzers, uzer];
-    console.log(newUser);
-  
-
-  const [users, setUsers] = useState([]);
-  useEffect(()=> {
-    setTimeout(()=> {
-      setUsers(data);
-    }, 1000)
-    }, [])
-
-
   const data = [
     {
       id: 1,
@@ -64,60 +42,48 @@ const UserManagement = () => {
       age: "22",
       city: "Lalitpur",
     },
+    {
+      id: 4,
+      username: "Sushant Kushwar",
+      email: "sushantk@gmail.com",
+      age: "22",
+      city: "Kathmandu",
+    },
   ];
-
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    setTimeout(() => {
+      setUsers(data);
+    }, 500)
+  }, []);
 
   return (
-    <>
-      <h1> User Management </h1>
-      <div className="button-container">
-      <Link to="/UserManagement/AddUser">
-        <button>Add User</button>
-      </Link>
-      </div>
-     
-      <table>
-        <thead>
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Age</th>
-          <th>City</th>
-          <th colSpan={3}>Action</th>
-        </tr>
-        </thead>
-      <tbody>
-        { users.length > 0 && 
-        <>
-          {users.map((user, index) => {
-          return (
-            <tr key={index}>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.age}</td>
-              <td>{user.city}</td>
-              <td>
-              <Link to= {`/UserManagement/UserDetails/${user.id}`}> <button>Details</button></Link>
-              </td>
-              <td>
-              <Link to= {`/UserManagement/edit/${user.id}`}> <button>Edit</button></Link>
-              </td>
-              <td>
-              <Link to= {`/UserManagement/delete/${user.id}`}> <button className="Delete">Delete</button></Link>
-              </td>
-            </tr>
-          );
-        })}
-        </>
-        }
-        { users.length === 0 && 
-        <>
-        <tr><td colSpan={5}>No records found</td></tr>
-        </>}
-      </tbody>
-        
-      </table>
-    </>
+    <div>
+      <h1>User Management</h1>
+      <Link to="/user-management/add" className="btn pull-right">Add Uer</Link>
+      <ViTable 
+        data={users}
+        header={header}
+        actions={[
+          {
+            name: "Detail",
+            link: "/user-management/detail",
+            className: "btn btn-default"
+          },
+          {
+            name: "Edit",
+            link: "/user-management/edit",
+            className: "btn"
+          },
+          {
+            name: "Delete",
+            link: "/user-management/delete",
+            className: "btn btn-danger"
+          }
+        ]}
+      />
+    </div>
   );
-};
+}
+
 export default UserManagement;
