@@ -58,31 +58,35 @@ const UserManagement = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>User Management</h1>
-      <Link to="/user-management/add" className="btn pull-right">Add Uer</Link>
+      <div className="button-container">
+      <Link to="/UserManagement/AddUser">
+        <button>Add User</button>
+      </Link>
+      </div>
       <ViTable 
         data={users}
         header={header}
         actions={[
           {
             name: "Detail",
-            link: "/user-management/detail",
-            className: "btn btn-default"
+            link: "/UserManagement/UserDetails",
+            className: "Edit"
           },
           {
             name: "Edit",
-            link: "/user-management/edit",
-            className: "btn"
+            link: "/UserManagement/edit",
+            className: "button"
           },
           {
             name: "Delete",
-            link: "/user-management/delete",
-            className: "btn btn-danger"
+            link: "/UserManagement/delete",
+            className: "Delete"
           }
         ]}
       />
-    </div>
+    </>
   );
 }
 

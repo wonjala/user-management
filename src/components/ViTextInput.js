@@ -6,13 +6,11 @@ const viTextInput = (props) => {
           type="text"
           name={props.name}
           value={props.value}
-          onChange={props.handleUserInput}
+          onChange={props.handleInputChange}
           {...props}
         />
-        {props.isSubmitted && props.value === "" && (
-          <span className="label-danger">{props.errorMessage}</span>
-        )}
-    </div>
+        { props.errorMessage !== '' && <span className="label-danger">{props.errorMessage}</span>}
+      </div>
     );
 }
 export default viTextInput;
