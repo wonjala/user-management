@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
-const UserDetails = () => {
+const UserDelete = () => {
     const { id }= useParams();
+    const navigate = useNavigate();
     const data = [
         {
           id: 1,
@@ -15,14 +17,14 @@ const UserDetails = () => {
         {
           id: 2,
           username: "Wonjala Joshi",
-          email: "wonjala.joshi@gmail.com",
+          email: "Wonjala.Joshi@gmail.com",
           age: "21",
           city: "Lalitpur",
         },
         {
           id: 3,
           username: "Numa Limbu",
-          email: "numa.limbu@gmail.com",
+          email: "Numa.Limbu@gmail.com",
           age: "22",
           city: "Lalitpur",
         },
@@ -43,13 +45,30 @@ const UserDetails = () => {
       
     return(
         <>
-        <h1>User Details {id} </h1>
+        <h1>Are you sure you want to delete this? {id} </h1>
         <div>Username: {user.username}</div>
         <div>Emial: {user.email}</div>
         <div>Age: {user.age}</div>
         <div>City: {user.city}</div>
+        <div>
+            <button
+                type="button"
+                className="Delete"
+                onClick ={()=> {
+                    navigate("/UserManagement");
+                }}
+               >Yes</button>
+               <button
+                type="button"
+                className="button"
+                onClick ={()=> {
+                    navigate("/UserManagement");
+                }}
+               >No</button>
+            
+        </div>
         </>
     )
 }
 
-export default UserDetails;
+export default UserDelete;

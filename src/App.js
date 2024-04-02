@@ -6,11 +6,13 @@ import './App.css';
 import Layout from './pages/themes/Layout';
 import UserManagement from  './pages/UserManagement/UseManagement';
 import AddUser from './pages/UserManagement/AddUser';
+import UserDelete  from './pages/UserManagement/UserDelete'
 import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 import UserDetails from './pages/UserManagement/UserDetails';
 import Login from './pages/Auth/Login';
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
   return (
@@ -19,8 +21,9 @@ function App() {
     <Routes>
         <Route path="/" element={<Layout />}>
         <Route path="/Home" element={<Home/>} />
-          <Route path="/UserManagement" element={<UserManagement/>} />
-          <Route path="/UserManagement/AddUser" element={<AddUser/>} />
+          <Route path="/UserManagement" element={<PrivateRoute component={UserManagement}/>} />
+          <Route path="/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>} />
+          <Route path="/UserManagement/Delete/:id" element={<PrivateRoute component={UserDelete}/>} />
           <Route path="/FAQ" element={<FAQ/>} />
           <Route path="/Contact" element={<ContactUs/>} />
           <Route path="/UserManagement/UserDetails/:id" element={<UserDetails/>} />
