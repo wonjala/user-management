@@ -13,10 +13,13 @@ import Home from './pages/Home';
 import UserDetails from './pages/UserManagement/UserDetails';
 import Login from './pages/Auth/Login';
 import PrivateRoute from './routes/PrivateRoute';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const notify = () => toast("Wow so easy!");
   return (
-    <div>
+    <div className='App'>
     <BrowserRouter>
     <Routes>
         <Route path="/" element={<Layout />}>
@@ -31,6 +34,7 @@ function App() {
         <Route path="/Login" element={<Login/>} />
       </Routes>
     </BrowserRouter>
+        <ToastContainer />
     </div>
   );
 }

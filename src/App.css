@@ -61,8 +61,8 @@ body {
 /* --------- Non-flexbox related styles --------- */
 .child {
   display: flex;
-  /* align-items: center;
-  justify-content: center; */
+  align-items: center;
+  justify-content: center;
   /* margin: 0.5%; */
   padding: 20px;
   font-size: 20px;
