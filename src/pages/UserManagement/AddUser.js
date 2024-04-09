@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import ViTextInput from "../../components/ViTextInput";
 import ViPasswordInput from "../../components/ViPasswordInput";
 import { validateEmail } from "../../utils/Common";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 const AddUser = () => {
   const navigate = useNavigate();
@@ -30,45 +32,44 @@ const AddUser = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const error = {...errorMessage};
-    if(user.username === '') {
-      error.username = 'Username is required';
-      isValid = false
+    const error = { ...errorMessage };
+    if (user.username === "") {
+      error.username = "Username is required";
+      isValid = false;
     } else {
-      error.username = '';
+      error.username = "";
     }
-    if(user.password === '') {
-      error.password = 'Password is required';
-      isValid = false
+    if (user.password === "") {
+      error.password = "Password is required";
+      isValid = false;
     } else {
-      error.password = '';
+      error.password = "";
     }
-    if(user.email === '') {
-      error.email = 'Email is required';
-      isValid = false
-    }else if(!validateEmail(user.email)) {
-      error.email = 'Email is not valid';
-      isValid = false
-    }else {
-      error.email = '';
+    if (user.email === "") {
+      error.email = "Email is required";
+      isValid = false;
+    } else if (!validateEmail(user.email)) {
+      error.email = "Email is not valid";
+      isValid = false;
+    } else {
+      error.email = "";
     }
 
-    if(user.age === '') {
-      error.age = 'Age is required';
-      isValid = false
-    }else {
-      error.age = '';
-    }
-    if(user.city === '') {
-      error.city = 'City is required';
-      isValid = false
+    if (user.age === "") {
+      error.age = "Age is required";
+      isValid = false;
     } else {
-      error.city = '';
+      error.age = "";
+    }
+    if (user.city === "") {
+      error.city = "City is required";
+      isValid = false;
+    } else {
+      error.city = "";
     }
     setErrorMessage(error);
     return isValid;
-  }
-  
+  };
 
   const handleInputChange = (event) => {
     // setUsername(e.target.value);
@@ -91,11 +92,20 @@ const AddUser = () => {
   //   };
 
   const saveForm = () => {
-    // console.log("saveform");
-    console.log("User: ", user);
-    // setIsSubmitted(true);
+    const uuid = uuidv4();
     if (validateForm()) {
-      navigate("/UserManagement");
+      const item = { ...user, id: uuid };
+      console.log("User: ", user);
+      axios
+        .post("http://localhost:4000/users", item)
+        .then(() => {
+          console.log("user saved");
+          navigate("/UserManagement");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Server error");
+        });
     }
   };
 
