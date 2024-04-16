@@ -13,11 +13,11 @@ import Home from './pages/Home';
 import UserDetails from './pages/UserManagement/UserDetails';
 import Login from './pages/Auth/Login';
 import PrivateRoute from './routes/PrivateRoute';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const notify = () => toast("Wow so easy!");
+  // const notify = () => toast("Wow so easy!");
   return (
     <div className='App'>
     <BrowserRouter>
@@ -26,6 +26,7 @@ function App() {
         <Route path="/Home" element={<Home/>} />
           <Route path="/UserManagement" element={<PrivateRoute component={UserManagement}/>} />
           <Route path="/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>} />
+          <Route path="/UserManagement/edit/:id" element={<PrivateRoute component={AddUser}/>} />
           <Route path="/UserManagement/Delete/:id" element={<PrivateRoute component={UserDelete}/>} />
           <Route path="/FAQ" element={<FAQ/>} />
           <Route path="/Contact" element={<ContactUs/>} />

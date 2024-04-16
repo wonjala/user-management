@@ -152,10 +152,6 @@ tr:nth-child(even) {
 
 }
 
-.input-group > * {
-  /* outline: 1px solid lightcoral; */
-}
-
 .input-group > label {
   text-align: left;
   flex: 1;
