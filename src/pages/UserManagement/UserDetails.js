@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { getUserById } from "../../service/user-management.service";
 
 const UserDetails = () => {
     const { id }= useParams();
@@ -13,9 +13,8 @@ const UserDetails = () => {
       });
 
       useEffect(() => {
-        axios.get(`http://localhost:4000/users/${id}`)
-        .then ((res) => {
-          setUser(res.data);
+        getUserById(id).then((data) => {
+          setUser(data);
         }).catch((err)=>{
           alert("API Server Error");
          console.log(err)

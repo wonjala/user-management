@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ViMessage from "../../components/ViMessage";
 import ViPasswordInput from "../../components/ViPasswordInput";
 import ViTextInput from "../../components/ViTextInput";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { showSuccessMessage } from "../../utils/notification";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,17 +28,7 @@ const Login = () => {
     console.log("is loging");
 
     if (isLogin) {
-      toast.success('Login Success!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-       
-        });
+      showSuccessMessage('Login successful');
       localStorage.setItem("isLogin", "1");
       navigate("/UserManagement");
     } else {

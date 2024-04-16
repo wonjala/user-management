@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { showDangerMessage } from "../../utils/notification";
+import { deleteUser } from "../../service/user-management.service";
 
 const UserDelete = () => {
   const { id } = useParams();
@@ -28,22 +28,11 @@ const UserDelete = () => {
       });
   }, []);
 
-  const deleteUser = () => {
+  const handleDeleteUser = () => {
     const confirm = window.confirm("Are you sure to Delete this user?");
     if (confirm) {
-      axios
-        .delete(`http://localhost:4000/users/${id}`)
-        .then((res) => {
-          toast.error('User Deleted', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            });
+      deleteUser(id).then(() => {
+        showDangerMessage('Delete user success')
           navigate("/UserManagement");
           console.log("Delete user Success");
         })
@@ -61,7 +50,7 @@ const UserDelete = () => {
       <div>Age: {user.age}</div>
       <div>City: {user.city}</div>
       <div>
-        <button type="button" className="Delete" onClick={deleteUser}>
+        <button type="button" className="Delete"   onClick={handleDeleteUser}>
           Yes
         </button>
         <button
